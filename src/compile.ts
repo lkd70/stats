@@ -47,8 +47,7 @@ program.parse(process.argv);
 
 const ALLOWED_SYSTEMS = [ 'linux', 'win', 'macos', 'freebsd', 'alpine' ];
 const ALLOWED_ARCHS = [ 'x64', 'x86', 'armv6', 'armv7' ];
-
-if (typeof program.node !== 'number' && program.node !== 'latest') exit('unknown node version');
+if (typeof parseInt(program.node) !== 'number' && program.node !== 'latest') exit('unknown node version');
 program.systems.forEach((s: string) => !ALLOWED_SYSTEMS.includes(s)&&exit('Unsupported systems'));
 program.archs.forEach((a: string) => !ALLOWED_ARCHS.includes(a)&&exit('Unsuppored architectures'));
 if (!existsSync(program.output)) mkdirSync(program.output);
@@ -63,7 +62,8 @@ const targets: string = program.archs.map((a: string) =>
 debug('Targets: ' + targets);
 
 const command = `node ./node_modules/pkg/lib-es5/bin.js ` +
-	`${program.source} -o ${program.output}${program.prefix} -t ${targets}`
+	`${program.source} -o ${program.output}${program.prefix} -t ${targets}` +
+	`${program.debug ? ' -d' : ''}`;
 
 debug('Command: ' + command);
 

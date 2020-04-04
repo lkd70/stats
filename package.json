@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "compile": "tsc && node ./dist/compile.js",
+    "compile": "tsc && node ./dist/compile.js -n 10",
     "start": "node index.js",
     "test": "./node_modules/mocha/bin/mocha tests/test.js"
   },
