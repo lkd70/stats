@@ -10,6 +10,7 @@ interface IStatsResponse {
 }
 
 const updateStats = (first = false) => getStats().then(data => {
+	if (first) console.log('Stats updater started.');
 	post('https://stats.lkd70.io/api/v1/update', data, true).then((res: IStatsResponse) => {
 		if (res.error) {
 			console.error(res.message);
