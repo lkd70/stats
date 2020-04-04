@@ -1,0 +1,19 @@
+{
+"compilerOptions": {
+		"allowJs": false,
+    "outDir": "dist",
+    "module": "CommonJS",
+    "target": "es6",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+		"alwaysStrict": true,
+		"noImplicitReturns": true,
+	},
+	"include": [
+			"./src/*"
+	]
+}
