@@ -9,13 +9,15 @@ interface IStatsResponse {
 	hash: String;
 }
 
-const updateStats = () => getStats().then(data => {
+const updateStats = (first = false) => getStats().then(data => {
 	post('https://stats.lkd70.io/api/v1/update', data, true).then((res: IStatsResponse) => {
 		if (res.error) {
+			console.error(res.message);
+		} else if (first) {
 			console.error(res.message);
 		}
 	}).catch(console.error);
 });
 
-updateStats();
+updateStats(true);
 setInterval(updateStats, 60000);
